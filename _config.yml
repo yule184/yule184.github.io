@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: '与买桂花同载酒'
-subtitle: '终不似 少年游'
-description: ''
+title: '少年游'
+subtitle: '相见欢'
+description: '今年花胜去年红。可惜明年花更好，知与谁同？'
 keywords:
 author: Yule
 language: zh-CN
@@ -97,6 +97,9 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: meow
+  
+meow:
+  author_pic: /images/avatar.jpg # author picture 作者头像
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
