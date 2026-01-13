@@ -13,10 +13,10 @@ author_pic: /images/avatar.jpg
 
 # background image/color 背景图片/颜色
 background:
-  type: 3 # 1: image 图片 | 2: color 颜色 | 3: gradient style 渐变
+  type: 1 # 1: image 图片 | 2: color 颜色 | 3: gradient style 渐变
   color: # (css color name css颜色名称) 'MistyRose' | (color code 颜色代码) '#FFE4E1'
-  image_url: images/Spiritfarer-1.png # image path 图片路径
-  gradient: linear-gradient(to bottom right,#ffa751,#ffe259) # gradient css statement 渐变css语句
+  image_url: img/blog-background.jpg # image path 图片路径
+  gradient: linear-gradient(to bottom right,#FFB540,#FDFFD3) # gradient css statement 渐变css语句
   attachment: fixed # background scrollable 背景是否可以随页面滚动: scroll | fixed
 
 # menu config 导航栏菜单项

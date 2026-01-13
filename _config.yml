@@ -101,6 +101,10 @@ theme: meow
   
 meow:
   author_pic: /images/avatar.jpg # author picture 作者头像
+  # background:
+  #   type: 1 # 1: image 图片 | 2: color 颜色 | 3: gradient style 渐变
+  #   image_url: /images/background.png # image path 图片路径
+
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
