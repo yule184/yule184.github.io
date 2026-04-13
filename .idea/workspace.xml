@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7c44f562-949e-4278-95a9-76e9342c209e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/images/avatar.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/source/images/avatar.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/meow/languages/zh-CN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/meow/languages/zh-CN.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/themes/meow/source/img/author.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/themes/meow/source/img/author.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +58,9 @@
       <workItem from="1775212999330" duration="3546000" />
       <workItem from="1775557044215" duration="508000" />
       <workItem from="1775724004052" duration="427000" />
+      <workItem from="1775959599035" duration="1855000" />
+      <workItem from="1775969923213" duration="102000" />
+      <workItem from="1776063841069" duration="479000" />
     </task>
     <servers />
   </component>
