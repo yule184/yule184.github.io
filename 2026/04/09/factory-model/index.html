@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="author" content="Yule"/><meta name="keyword"/><meta name="description" content="软件系统设计课程笔记 工厂模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件系统设计-设计模式部分-工厂模式">
+<meta property="og:url" content="https://yule184.github.io/2026/04/09/factory-model/index.html">
+<meta property="og:site_name" content="少年游">
+<meta property="og:description" content="软件系统设计课程笔记 工厂模式">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-04-09T08:41:11.000Z">
+<meta property="article:modified_time" content="2026-04-20T06:25:34.768Z">
+<meta property="article:author" content="Yule">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="软件系统设计">
+<meta name="twitter:card" content="summary"><title>软件系统设计-设计模式部分-工厂模式 - 欲买桂花同载酒 - 终不似 少年游</title><link rel="shortcut icon" href="/img/site-icon.png">
+<link rel="stylesheet" href="/css/style.css" id="dm-light">
+
+
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+<meta name="generator" content="Hexo 8.1.1"></head><body><header><div class="top-nav" ondblclick="scrollToTop()"><div class="nav-info"><div class="nav-icon"><img id="nav-icon" src="/img/site-icon.png"/></div><div class="nav-title"><a id="nav-title" href="/" title="主页">少年游</a></div></div><div class="nav-ribbon"><div class="top-menu-expanded"><a class="top-menu-item" href="/archives"><span>归档</span></a><a class="top-menu-item" href="/categories"><span>分类</span></a><a class="top-menu-item" href="/tags"><span>标签</span></a><a class="top-menu-item" href="/about"><span>关于</span></a></div><div class="top-search" onclick="toggleSearchWindow()"><div id="top-search-btn" title="搜索"><i class="icon fa-solid fa-magnifying-glass"></i><span>搜索</span></div></div><div id="top-menu-btn" onclick="openTopMenu()" title="打开菜单"><i class="fa-solid fa-bars fa-lg"></i></div></div></div></header><div id="top-menu-hidden"><div class="menu-hidden-content"><div class="menu-hidden-nav"><a class="menu-hidden-item" href="/archives"><i class="fa-solid fa-box-archive fa-sm"></i><span>归档</span></a><a class="menu-hidden-item" href="/categories"><i class="fa-regular fa-folder-open fa-sm"></i><span>分类</span></a><a class="menu-hidden-item" href="/tags"><i class="fa-solid fa-tags fa-sm"></i><span>标签</span></a><a class="menu-hidden-item" href="/about"><i class="fa-solid fa-paw fa-sm"></i><span>关于</span></a></div></div><div class="menu-hidden-blank" onclick="closeTopMenu()"></div></div>
+<div class="blog-info"><div class="blog-pic"><img id="blog-pic" src="/img/site-icon.png"/></div><div class="blog-title"><i class="fa-solid fa-paw fa-2xs fa-rotate-by"></i><span>欲买桂花同载酒</span><i class="fa-solid fa-paw fa-2xs fa-rotate-by"></i></div><div class="blog-desc">一个想从软件工程跑路的软工菜鸡和构史学家的个人博客</div></div><div class="main"><div class="main-content"><article class="post"><div class="post-title"><h1><i class="fa-solid fa-paw"></i>软件系统设计-设计模式部分-工厂模式</h1></div><div class="post-info"><div class="post-info-first-line"><div class="post-date"><i class="icon fa-regular fa-calendar-plus" title="发布日期"></i><time class="publish-time">2026-04-09</time><i class="icon fa-regular fa-calendar-check" title="更新日期"></i><time class="update-time">2026-04-20</time></div>
+<div class="post-categories"><i class="icon fa-regular fa-folder-open" title="分类"></i><a class="post-category" href="/categories/%E5%A4%A7%E4%B8%89/">大三</a></div>
+<div class="post-tags"><i class="icon fa-solid fa-tags" title="标签"></i><a class="post-tag" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a><i class="icon fa-solid fa-tags" title="标签"></i><a class="post-tag" href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">软件系统设计</a></div></div><div class="post-info-second-line"><div class="post-copyright"><i class="icon fa-brands fa-creative-commons" title="版权声明"></i><span>版权声明: </span><a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans" title="CC BY-NC-ND 4.0">署名-非商业性使用-禁止演绎 4.0</a></div>
+<div class="post-word-count"><i class="icon fa-solid fa-pen-to-square"></i><span>全文约3.6K字</span></div><div class="pageview-post"><i class="icon fa-regular fa-eye"></i><span id="busuanzi_container_page_pv">阅读次数: <span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner"></i></span></span></div></div></div><div class="post-content"><p>软件系统设计课程笔记</p>
+<p>工厂模式</p>
+<span id="more"></span>
+
+
+<h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><h2 id="模式定义"><a href="#模式定义" class="headerlink" title="模式定义"></a>模式定义</h2><p>简单工厂模式(Simple Factory Pattern)：又称为静态工厂方法(Static Factory Method)模式，它属于<strong>类创建型模式</strong>。</p>
+<p>在简单工厂模式中，可以<strong>根据参数的不同返回不同类的实例</strong>。简单工厂模式专门<strong>定义一个类来负责创建其他类的实例</strong>，被创建的实例通常都具有共同的父类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(arg.equalslgnoreCase(<span class="string">&quot;A&quot;</span>))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ConcreteProductA</span>();</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(arg.equalslgnoreCase(<span class="string">&quot;B&quot;</span>))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ConcreteProductB</span>();</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="模式结构"><a href="#模式结构" class="headerlink" title="模式结构"></a>模式结构</h2><p>简单工厂模式包含如下角色</p>
+<ul>
+<li>Factory：工厂角色</li>
+<li>Product：抽象产品角色</li>
+<li>ConcreteProduct：具体产品角色</li>
+</ul>
+<p><strong>将对象的创建和对象本身业务处理分离</strong>可以<strong>降低系统的耦合度</strong>，使得两者修改起来都相对容易。</p>
+<p>在调用工厂类的工厂方法时，由于工厂方法是<strong>静态方法</strong>，使用起来很方便，可通过类名直接调用，而且只需要传入一个简单的参数即可，在实际开发中，还可以在调用时将所传入的参数保存在XML等格式的<strong>配置文件</strong>中，修改参数时无须修改任何Java源代码。</p>
+<p>简单工厂模式最大的问题在于<strong>工厂类的职责相对过重</strong>，增加新的产品需要修改工厂类的判断逻辑，这一点与开闭原则是相违背的。</p>
+<p>简单工厂模式的要点在于：当你需要什么，只需要传入一个正确的参数，就可以获取你所需要的对象，而无须知道其创建细节。</p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p>优点</p>
+<ul>
+<li>实现了<strong>对责任的分割</strong>，提供了专门的工厂类用于创建对象</li>
+<li>客户端<strong>无须知道所创建的具体产品类的类名</strong>，只需要知道具体产品类所对应的参数即可，对于一些复杂的类名 ，通过简单工厂模式可以减少使用者的记忆量</li>
+<li>通过引入配置文件，可以<strong>在不修改任何客户端代码的情况下更换和增加新的具体产品类</strong>，在一定程度上提高了系统的灵活性。</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li><strong>工厂类集中了所有产品创建逻辑</strong>，一旦不能正确工作，整个系统都要受到影响</li>
+<li>使用简单工厂模式将会<strong>增加系统中类的个数</strong>，在一定程度上增加了系统的复杂度和理解难度</li>
+<li><strong>系统扩展困难</strong>，一旦添加新产品就不得不修改工厂逻辑，在产品类型较多时，有可能造成工厂逻辑过于复杂，不利于系统的扩展和维护</li>
+<li>简单工厂模式由于使用了静态的工厂方法，造成工厂角色无法形成基于继承的等级结构</li>
+</ul>
+<p>在以下情况可以使用简单工厂模式：工厂类负责创建的对象比较少&#x2F;客户端只知道传入工厂类的参数，对于如何创建对象不关心</p>
+<h2 id="模式应用"><a href="#模式应用" class="headerlink" title="模式应用"></a>模式应用</h2><ol>
+<li>在JDK类库中广泛使用了简单工厂模式，如工具类 java.text.DateFormat，它用于格式化一个本地日期或者时间</li>
+<li>Java加密技术</li>
+</ol>
+<h1 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h1><p>简单工厂模式的不足：单工厂模式最大的缺点是当有新产品要加入到系统中时 ，必须修改工厂类，加入必要的处理逻辑，这违背了“ 开闭原则”。</p>
+<h2 id="模式动机"><a href="#模式动机" class="headerlink" title="模式动机"></a>模式动机</h2><p>考虑这样一个系统，按钮工厂类可以返回一个具体的按钮实例，如圆形按钮、矩形按钮、菱形按钮等。在这个系统中，如果需要增加一种新类型的按钮，如椭圆形按钮，那么除了增加一个新的具体产品类之外，还需要修改工厂类的代码，这就使得整个设计在一定程度上违反了“开闭原则 ”。</p>
+<p>现在对该系统进行修改，不再设计一个按钮工厂类来统一负责所有产品的创建，而是将<strong>具体按钮的创建过程交给专门的工厂子类去完成</strong>，我们先定义一个<strong>抽象的按钮工厂类</strong>，再<strong>定义具体的工厂类</strong>来生成圆形按钮、矩形按钮、菱形按钮等，它们实现在抽象按钮工厂类中定义的方法。这种抽象化的结果使这种结构可以在不修改具体工厂类的情况下引进新的产品，如果出现新的按钮类型，只需要<strong>为这种新类型的按钮创建一个具体的工厂类</strong>就可以获得该新按钮的实例，这一特点无疑使得工厂方法模式具有超越简单工厂模式的优越性，<strong>更加符合“开闭原则”</strong>  。</p>
+<h2 id="模式定义-1"><a href="#模式定义-1" class="headerlink" title="模式定义"></a>模式定义</h2><p><strong>工厂方法模式(Factory Method Pattern)又称为工厂模式</strong>，也叫虚拟构造器(Virtual Constructor)模式或者多态工厂(Polymorphic Factory)模式，它属于<strong>类创建型模式</strong>。</p>
+<p>在工厂方法模式中，工厂父类负责定义创建产品对象的公共接口，而工厂子类则负责生成具体的产品对象，这样做的目的是<strong>将产品类的实例化操作延迟到工厂子类中完成</strong>，即通过工厂子类来确定究竟应该实例化哪一个具体产品类。</p>
+<ul>
+<li>核心的工厂类不再负责所有产品的创建，而是将具体创建工作交给子类去做。</li>
+<li>允许系统在不修改工厂角色的情况下引进新产品</li>
+</ul>
+<h2 id="模式分析"><a href="#模式分析" class="headerlink" title="模式分析"></a>模式分析</h2><p>为了提高系统的可扩展性和灵活性，<strong>在定义工厂和产品时都必须使用抽象层</strong>，如果需要更换产品类，只需要更换对应的工厂即可，其他代码不需要进行任何修改。</p>
+<p><strong>配置文件代码</strong>： 一般将具体工厂类的实例化过程进行改进，不直接使用new关键字来创建对象，而是将具体类的类名写入<strong>配置文件</strong>中，再通过<strong>Java的反射机制</strong>，<strong>读取XML格式的配置文件</strong>，根据 存储在XML文件中的类名字符串生成对象。</p>
+<details class="lake-collapse"><summary id="u3670e2bd"><span class="ne-text">Java反射：</span></summary><p id="ucfbac5d0" class="ne-p"><span class="ne-text">在程序运行时获取已知名称的类或已有对象的相关信息的一种机制，包括类的方法、属性、超类等信息，还包括实例的创建和实例类型的判断等。 可通过Class类的forName()方法返回与带有给定字符串名的类或接口相关联的Class对象，再通过newInstance()方法创建此对象所表示的类的一个新实例，即通过一个类名字符串得到类的实例。  </span></p></details>
+
+<h2 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="工厂方法模式的优点"><a href="#工厂方法模式的优点" class="headerlink" title="工厂方法模式的优点"></a>工厂方法模式的优点</h3><ul>
+<li>用户只需要关心所需产品对应的工厂，无须关心创建细节，甚至无须知道具体产品类的类名。  </li>
+<li>工厂可以自主确定创建何种产品对象，而如何创建这个对象的细节则完全封装在具体工厂内部。  </li>
+<li>在系统中加入新产品时，无须修改抽象工厂和抽象产品提供的接口，无须修改客户端，也无须修改 其他的具体工厂和具体产品，而只要添加一个具体工厂和具体产品 就可以了。这样，系统的可扩展性也就变得非常好，完全符合“开 闭原则”。</li>
+</ul>
+<h3 id="工厂方法模式的缺点"><a href="#工厂方法模式的缺点" class="headerlink" title="工厂方法模式的缺点"></a>工厂方法模式的缺点</h3><p>在添加新产品时，需要编写<strong>新的具体产品类</strong>，而且还要提供与之对应的<strong>具体工厂类</strong>，系统中<strong>类的个数将成对增加</strong>，在一定程度上增加了系统的<strong>复杂度</strong>，有更多的类要编译和运行，会给系统带来一些<strong>额外的开销</strong>。</p>
+<p>由于考虑到系统的可扩展性，需要引入抽象层，在客户端代码中均使用抽象层进行定义，<strong>增加了系统的抽象性和理解难度</strong>，且在实现时可能需要用到<strong>DOM、反射等技术</strong>，增加了系统的实现难度</p>
+<h3 id="适用环境"><a href="#适用环境" class="headerlink" title="适用环境"></a>适用环境</h3><ol>
+<li>一个类不知道它所需要的对象的类</li>
+<li>一个类通过其子类来指定创建哪个对象</li>
+<li>将创建对象的任务委托给多个工厂子类中的某一个，客户端在使用时可以无需关心是哪一个工厂子类创建产品子类，需要时再动态指定</li>
+</ol>
+<h1 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h1><p>在工厂方法模式中具体工厂负责生产具体的产品，每一个具体工厂对应一种具体产品，工厂方法也具有唯一性，一般情况下，一个具体工厂中只有一个工厂方法或者一组重载的工厂方法。但是有时候我们需要一个工厂可以提供多个产品对象，而不是单一的产品对象。</p>
+<p><strong>产品等级结构</strong>：产品等级结构即<strong>产品的继承结构</strong>，如一个抽象 是电视机，其子类有海尔电视机、海信电视机、TCL电视机，则抽象电视机与具体品牌的电视机之间构成了一个产品等级结构，抽象电视机是父类，而具体品牌的电视机是其子类。</p>
+<p><strong>产品族</strong>：在抽象工厂模式中，产品族是指由同一个工厂生产的，位于不同产品等级结构中的一组产品，如海尔电器工厂生产的海尔电视机、海尔电冰箱，海尔电视机位于电视机产品等级结构中，海尔电冰箱位于电冰箱产品等级结构中。</p>
+<p>当系统所提供的工厂所需生产的具体产品并不是一个简单的对象，而是<strong>多个位于不同产品等级结构中属于不同类型的具体产品时</strong>需要使用<strong>抽象工厂模式</strong>。</p>
+<p>抽象工厂模式是所有形式的工厂模式中<strong>最为抽象和最具一般性的一种形态</strong>。 抽象工厂模式与工厂方法模式最大的区别在于，<strong>工厂方法模式针对的是一个产品等级结构，而抽象工厂模式则需要面对多个产品等级结构</strong>，一个工厂等级结构可以负责多个不同产品等级结构中的产品对象的创建。当一个工厂等级结构可以创建出分属于不同产品等级结构的一个产品族中的所有对象时，抽象工厂模式比工厂方法模式更为简单、有效率</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>抽象工厂模式(Abstract Factory Pattern)：提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。抽象工厂模式又称为Kit模式，属于<strong>对象创建型模式</strong>。</p>
+<blockquote>
+<p>Abstract Factory Pattern: Provide an interface for creating families of related or dependent objects without specifying their concrete classes.</p>
+<p>Frequency of use: high</p>
+</blockquote>
+<h2 id="模式结构-1"><a href="#模式结构-1" class="headerlink" title="模式结构"></a>模式结构</h2><p>抽象工厂模式包含如下角色</p>
+<ul>
+<li>AbstractFactory：抽象工厂</li>
+<li>ConcreteFactory：具体工厂</li>
+<li>AbstractProduct：抽象产品</li>
+<li>Product：具体产品</li>
+</ul>
+<h2 id="抽象工厂模式的优缺点"><a href="#抽象工厂模式的优缺点" class="headerlink" title="抽象工厂模式的优缺点"></a>抽象工厂模式的优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ol>
+<li>隔离了具体类的生成。只需改变具体工厂的实例，就可以在某种程度上改变整个软件系统的行为</li>
+<li>实现高内聚低耦合的设计目的</li>
+<li>能保证客户端始终只是用同一个产品族中的对象</li>
+<li>增加新的具体工厂和产品族很方便，无需修改已有系统，符合开闭原则</li>
+</ol>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>在添加新的产品对象时，<strong>难以扩展抽象工厂来生产新种类的产品</strong>，这是因为在抽象工厂角色中规定了所有可能被创建的产品集合，要支持新种类的产品就意味着要对该接口进行扩展，而这将涉及到对抽象工厂 角色及其所有子类的修改，显然会带来较大的不便。</p>
+<p><u>开闭原则的倾斜性</u>（<strong>增加新的工厂和产品族容易，增加新的产品等级结构麻烦</strong>）</p>
+<blockquote class="blue">“开闭原则”要求系统对扩展开放，对修改封闭，通过扩展达到增强其功能的目的。对于涉及到多个产品族与多个产品等级结构的系统，其功能增强包括两方面：
+
+1. 增加产品族：对于增加新的产品族，工厂方法模式很好的支持了“开闭原则”，对于新增加的产品族，只需要对应增加一个新的具体工厂即可，对已有代码无须做任何修改。 
+
+2. 增加新的产品等级结构：对于增加新的产品等级结构，需要修改所有的工厂角色，包括抽象工厂类，在所有的工厂类中都需要增加生产新产品的方法，不能很好地支持“开闭原则”。 
+
+抽象工厂模式的这种性质称为“开闭原则”的倾斜性，抽象工厂模式以一种倾斜的方式支持增加新的产品，它为新产品族的增加提供方便，但不能为新的产品等级结构的增加提供这样的方便。</blockquote>
+
+<h3 id="使用环境"><a href="#使用环境" class="headerlink" title="使用环境"></a>使用环境</h3><ol>
+<li>一个系统<strong>不应当依赖于产品类实例如何被创建、组合和表达的细节</strong>，这对于所有类型的工厂模式都是重要的。 </li>
+<li>系统中有<strong>多于一个的产品族</strong>，而每次只使用其中某一产 品族。 </li>
+<li><strong>属于同一个产品族的产品将在一起使用</strong>，这一约束必须在系统的设计中体现出来。 </li>
+<li>系统提供一个产品类的库，<strong>所有的产品以同样的接口出现，从而使客户端不依赖于具体实现</strong>。</li>
+</ol>
+</div><div class="post-end"><div class="post-prev"><a href="/2026/04/13/RenPy-learning/" title="上一篇文章"><i class="fa-solid fa-chevron-left fa-lg"></i></a></div><div class="post-next"><a href="/2026/04/03/Software-System-Design-1/" title="下一篇文章"><i class="fa-solid fa-chevron-right fa-lg"></i></a></div></div></article><div id="post-toc"><aside class="toc-aside"><div class="toc-title"><span><i class="fa-solid fa-paw"></i>目录</span></div><div class="toc-container" id="toc-body"><ol class="toc-content"><li class="toc-content-item toc-content-level-1"><a class="toc-content-link" href="#%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-content-number">1.</span> <span class="toc-content-text">简单工厂模式</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%E6%A8%A1%E5%BC%8F%E5%AE%9A%E4%B9%89"><span class="toc-content-number">1.1.</span> <span class="toc-content-text">模式定义</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%E6%A8%A1%E5%BC%8F%E7%BB%93%E6%9E%84"><span class="toc-content-number">1.2.</span> <span class="toc-content-text">模式结构</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-content-number">1.3.</span> <span class="toc-content-text">优缺点</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%E6%A8%A1%E5%BC%8F%E5%BA%94%E7%94%A8"><span class="toc-content-number">1.4.</span> <span class="toc-content-text">模式应用</span></a></li></ol></li><li class="toc-content-item toc-content-level-1"><a class="toc-content-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="toc-content-number">2.</span> <span class="toc-content-text">工厂方法模式</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%E6%A8%A1%E5%BC%8F%E5%8A%A8%E6%9C%BA"><span class="toc-content-number">2.1.</span> <span class="toc-content-text">模式动机</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%E6%A8%A1%E5%BC%8F%E5%AE%9A%E4%B9%89-1"><span class="toc-content-number">2.2.</span> <span class="toc-content-text">模式定义</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%E6%A8%A1%E5%BC%8F%E5%88%86%E6%9E%90"><span class="toc-content-number">2.3.</span> <span class="toc-content-text">模式分析</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9-1"><span class="toc-content-number">2.4.</span> <span class="toc-content-text">优缺点</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-3"><a class="toc-content-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-content-number">2.4.1.</span> <span class="toc-content-text">工厂方法模式的优点</span></a></li><li class="toc-content-item toc-content-level-3"><a class="toc-content-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-content-number">2.4.2.</span> <span class="toc-content-text">工厂方法模式的缺点</span></a></li><li class="toc-content-item toc-content-level-3"><a class="toc-content-link" href="#%E9%80%82%E7%94%A8%E7%8E%AF%E5%A2%83"><span class="toc-content-number">2.4.3.</span> <span class="toc-content-text">适用环境</span></a></li></ol></li></ol></li><li class="toc-content-item toc-content-level-1"><a class="toc-content-link" href="#%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-content-number">3.</span> <span class="toc-content-text">抽象工厂模式</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-content-number">3.1.</span> <span class="toc-content-text">定义</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%E6%A8%A1%E5%BC%8F%E7%BB%93%E6%9E%84-1"><span class="toc-content-number">3.2.</span> <span class="toc-content-text">模式结构</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-content-number">3.3.</span> <span class="toc-content-text">抽象工厂模式的优缺点</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-3"><a class="toc-content-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-content-number">3.3.1.</span> <span class="toc-content-text">优点</span></a></li><li class="toc-content-item toc-content-level-3"><a class="toc-content-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-content-number">3.3.2.</span> <span class="toc-content-text">缺点</span></a></li><li class="toc-content-item toc-content-level-3"><a class="toc-content-link" href="#%E4%BD%BF%E7%94%A8%E7%8E%AF%E5%A2%83"><span class="toc-content-number">3.3.3.</span> <span class="toc-content-text">使用环境</span></a></li></ol></li></ol></li></ol></div></aside><div class="toc-blank" onclick="tocToggle()"></div></div></div></div><div id="tool-bar"><div id="tool-bar-main"><div id="tool-toggle" onclick="toolToggle()" title="设置"><i class="fa-solid fa-gear"></i></div><div id="toc-toggle" onclick="tocToggle()" title="目录"><i class="fa-solid fa-list-ul"></i></div><div id="back-to-top" onclick="scrollToTop()" title="返回顶部"><i class="fa-solid fa-chevron-up"></i></div></div><div id="tool-bar-more" style="display: none;"><div id="darkmode-switch" onclick="darkmodeSwitch()" title="深色模式"><i class="fa-solid fa-circle-half-stroke"></i></div><div id="font-size-increase" onclick="fontSizeIncrease()" title="放大字体"><i class="fa-solid fa-plus"></i></div><div id="font-size-decrease" onclick="fontSizeDecrease()" title="缩小字体"><i class="fa-solid fa-minus"></i></div></div></div><div id="search-panel"><div class="search-container"><div class="search-head"><div class="search-title"><span><i class="fa-solid fa-paw"></i>搜索</span></div><div class="search-close-btn" onclick="toggleSearchWindow()"><i class="fa-regular fa-circle-xmark"></i></div></div><div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="search-input" type="text" placeholder="请输入需要搜索的内容……" value=""/></div><div class="search-body"><div id="search-count">匹配结果数: </div><div id="search-result"></div><div id="search-result-empty">未搜索到匹配的文章。</div></div></div></div><footer><div class="footer-content"><div class="copyright-info"><i class="fa-regular fa-copyright fa-xs"></i><span>2026 </span><a href="/about">Yule</a><i class="fa-solid fa-cat fa-sm"></i><span>Powered by </span><a href="https://hexo.io/" target="_blank">Hexo</a><span> &amp; </span><a href="https://github.com/chanwj/hexo-theme-meow" target="_blank" title="v2.1.5">Theme Meow</a></div><div class="pageview-site"><span id="busuanzi_container_site_pv">总访问量 : <span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner"></i></span></span><span id="busuanzi_container_site_uv">总访客数 : <span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner"></i></span></span></div></div></footer>
+<script>const GLOBAL_CONFIG = {
+  comment: { theme: ''}
+}
+</script>
+<script src="/js/third-party/darkmode.js"></script>
+<script>var options = {
+  dark: '/css/darkmode.css',
+  startAt: '24:00',
+  endAt: '06:00',
+  checkSystemScheme: 'false',
+  saveOnToggle: 'true'
+};
+var darkMode = new DarkMode(options);
+// change comment theme synchronously 同步修改评论区主题
+if (darkMode.getMode() == "dark" && (false || false)) {
+  if (document.getElementById('comment')) {
+    document.getElementById('comment').getElementsByTagName('script')[0].setAttribute('data-theme', 'noborder_dark');
+  }
+}
+</script><script>if (localStorage.getItem('font-size')) {
+  document.querySelector('.post-content').style.fontSize = localStorage.getItem('font-size') + 'px';
+}
+</script>
+<script src="/js/theme/tool-bar.js"></script>
+
+
+<script src="/js/theme/menu.js"></script>
+
+
+<script src="/js/third-party/clipboard.min.js"></script>
+
+
+<script src="/js/theme/copy.js"></script>
+<script>copyCode();
+</script>
+<script src="/js/jquery-3.7.1.min.js"></script>
+
+
+<script src="/js/theme/search.js"></script>
+<script>searchFunc('/search.xml', 'search-input', 'search-result');
+</script></body></html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="author" content="Yule"/><meta name="keyword"/><meta name="description" content="一些LLM相关的基础知识，非常基础，仅作为基本概念梳理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LLM 相关基本概念">
+<meta property="og:url" content="https://yule184.github.io/2026/03/20/LLM-learn/index.html">
+<meta property="og:site_name" content="少年游">
+<meta property="og:description" content="一些LLM相关的基础知识，非常基础，仅作为基本概念梳理">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-03-20T07:27:32.000Z">
+<meta property="article:modified_time" content="2026-04-20T06:25:34.768Z">
+<meta property="article:author" content="Yule">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="学习">
+<meta name="twitter:card" content="summary"><title>LLM 相关基本概念 - 欲买桂花同载酒 - 终不似 少年游</title><link rel="shortcut icon" href="/img/site-icon.png">
+<link rel="stylesheet" href="/css/style.css" id="dm-light">
+
+
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+<meta name="generator" content="Hexo 8.1.1"></head><body><header><div class="top-nav" ondblclick="scrollToTop()"><div class="nav-info"><div class="nav-icon"><img id="nav-icon" src="/img/site-icon.png"/></div><div class="nav-title"><a id="nav-title" href="/" title="主页">少年游</a></div></div><div class="nav-ribbon"><div class="top-menu-expanded"><a class="top-menu-item" href="/archives"><span>归档</span></a><a class="top-menu-item" href="/categories"><span>分类</span></a><a class="top-menu-item" href="/tags"><span>标签</span></a><a class="top-menu-item" href="/about"><span>关于</span></a></div><div class="top-search" onclick="toggleSearchWindow()"><div id="top-search-btn" title="搜索"><i class="icon fa-solid fa-magnifying-glass"></i><span>搜索</span></div></div><div id="top-menu-btn" onclick="openTopMenu()" title="打开菜单"><i class="fa-solid fa-bars fa-lg"></i></div></div></div></header><div id="top-menu-hidden"><div class="menu-hidden-content"><div class="menu-hidden-nav"><a class="menu-hidden-item" href="/archives"><i class="fa-solid fa-box-archive fa-sm"></i><span>归档</span></a><a class="menu-hidden-item" href="/categories"><i class="fa-regular fa-folder-open fa-sm"></i><span>分类</span></a><a class="menu-hidden-item" href="/tags"><i class="fa-solid fa-tags fa-sm"></i><span>标签</span></a><a class="menu-hidden-item" href="/about"><i class="fa-solid fa-paw fa-sm"></i><span>关于</span></a></div></div><div class="menu-hidden-blank" onclick="closeTopMenu()"></div></div>
+<div class="blog-info"><div class="blog-pic"><img id="blog-pic" src="/img/site-icon.png"/></div><div class="blog-title"><i class="fa-solid fa-paw fa-2xs fa-rotate-by"></i><span>欲买桂花同载酒</span><i class="fa-solid fa-paw fa-2xs fa-rotate-by"></i></div><div class="blog-desc">一个想从软件工程跑路的软工菜鸡和构史学家的个人博客</div></div><div class="main"><div class="main-content"><article class="post"><div class="post-title"><h1><i class="fa-solid fa-paw"></i>LLM 相关基本概念</h1></div><div class="post-info"><div class="post-info-first-line"><div class="post-date"><i class="icon fa-regular fa-calendar-plus" title="发布日期"></i><time class="publish-time">2026-03-20</time><i class="icon fa-regular fa-calendar-check" title="更新日期"></i><time class="update-time">2026-04-20</time></div>
+<div class="post-categories"><i class="icon fa-regular fa-folder-open" title="分类"></i><a class="post-category" href="/categories/%E5%A4%A7%E4%B8%89/">大三</a><i class="icon fa-regular fa-folder-open" title="分类"></i><a class="post-category" href="/categories/%E5%A4%A7%E4%B8%89/%E8%A1%8C%E4%B8%9A%E7%9F%A5%E8%AF%86/">行业知识</a></div>
+<div class="post-tags"><i class="icon fa-solid fa-tags" title="标签"></i><a class="post-tag" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a><i class="icon fa-solid fa-tags" title="标签"></i><a class="post-tag" href="/tags/LLM/">LLM</a></div></div><div class="post-info-second-line"><div class="post-copyright"><i class="icon fa-brands fa-creative-commons" title="版权声明"></i><span>版权声明: </span><a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans" title="CC BY-NC-ND 4.0">署名-非商业性使用-禁止演绎 4.0</a></div>
+<div class="post-word-count"><i class="icon fa-solid fa-pen-to-square"></i><span>全文约2.1K字</span></div><div class="pageview-post"><i class="icon fa-regular fa-eye"></i><span id="busuanzi_container_page_pv">阅读次数: <span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner"></i></span></span></div></div></div><div class="post-content"><p>一些<code>LLM</code>相关的基础知识，非常基础，仅作为基本概念梳理</p>
+<span id="more"></span>
+
+<h1 id="一、基础层"><a href="#一、基础层" class="headerlink" title="一、基础层"></a>一、基础层</h1><h2 id="1-LLM-Large-Language-Model-大语言模型"><a href="#1-LLM-Large-Language-Model-大语言模型" class="headerlink" title="1. LLM (Large Language Model, 大语言模型)"></a>1. LLM (Large Language Model, 大语言模型)</h2><blockquote>基于海量文本训练，通过预测下一个 token 来生成内容的概率模型。</blockquote>
+
+<ul>
+<li><strong>能力边界</strong>： 擅长泛化任务（写作、翻译、总结），不擅长精确计算和实时信息（除非外挂工具）。</li>
+<li><strong>幻觉</strong> (Hallucination)： 模型会一本正经地胡说八道。对策： 需要 RAG 或人工校验。</li>
+<li><strong>上下文窗口</strong> (Context Window)： 模型一次能“记住”的最大字数（如 128K）。影响： 决定了你能喂给它多少文档做分析。</li>
+</ul>
+<h2 id="2-Token"><a href="#2-Token" class="headerlink" title="2. Token"></a>2. Token</h2><blockquote>LLM 处理文本的最小单位（不是字，也不是词，通常是半个词或一个偏旁）。</blockquote>
+
+<ul>
+<li><strong>通俗类比</strong>： 模型的“计费单位”和“消化单位”。就像吃饭按“口”算，不是按“碗”算。</li>
+<li><strong>成本计算</strong>： API 调用费通常按 <em>Input Token + Output Token</em> 计费。设计产品时要考虑Token 经济性（比如压缩 Prompt 能省钱）。</li>
+<li><strong>速度影响</strong>： 生成速度通常用 Tokens&#x2F;s 衡量。</li>
+</ul>
+<h2 id="3-Transformer-Attention-Mechanism-注意力机制"><a href="#3-Transformer-Attention-Mechanism-注意力机制" class="headerlink" title="3. Transformer &amp; Attention Mechanism (注意力机制)"></a>3. Transformer &amp; Attention Mechanism (注意力机制)</h2><blockquote class="pink">现代 LLM 的基石架构。Attention 让模型在处理一个词时，能“关注”到句子中其他相关的词（无论距离多远）。</blockquote>   
+
+<ul>
+<li><strong>通俗类比</strong>： 读长文章时，读到后面能自动回想前面的关键信息，而不是读了后面忘前面。</li>
+<li><strong>并行计算</strong>： 解释了为什么大模型训练需要大量 GPU。 </li>
+<li><strong>长文本依赖</strong>： 注意力机制决定了模型理解长逻辑的能力，但也带来了计算量平方级增长的问题（引出了后面的稀疏注意力等技术）。</li>
+</ul>
+<h2 id="4-BERT-vs-LLM-GPT-类"><a href="#4-BERT-vs-LLM-GPT-类" class="headerlink" title="4. BERT vs. LLM (GPT 类)"></a>4. BERT vs. LLM (GPT 类)</h2><blockquote>BERT 是双向编码模型（擅长理解），GPT 是单向解码模型（擅长生成）。</blockquote>
+
+<ul>
+<li><strong>BERT</strong>： 像做阅读理解题的高手，适合搜索、分类、情感分析（判别式）。</li>
+<li><strong>LLM (GPT)</strong>： 像写作文的高手，适合对话、创作、代码生成（生成式）。<br>   选型策略： 如果需求是“判断这句话是不是骂人”，用 BERT 类小模型（便宜、快、准）；如果需求是“写一封道歉信”，必须用 LLM。不要动不动就调大模型，合适才是最好的。</li>
+</ul>
+<h1 id="二、架构层：如何让模型更聪明？"><a href="#二、架构层：如何让模型更聪明？" class="headerlink" title="二、架构层：如何让模型更聪明？"></a>二、架构层：如何让模型更聪明？</h1><p>应对幻觉，我们并非毫无手段——RAG、微调、提示词工程&#x2F;引用溯源、置信度展示（技术架构、产品设计、运营迭代）</p>
+<h2 id="5-RAG-Retrieval-Augmented-Generation-检索增强生成"><a href="#5-RAG-Retrieval-Augmented-Generation-检索增强生成" class="headerlink" title="5.RAG (Retrieval-Augmented Generation, 检索增强生成)"></a>5.RAG (Retrieval-Augmented Generation, 检索增强生成)</h2><p>   在用户提问时，先去外部知识库（如公司文档）检索相关信息，再把“问题 + 资料”一起喂给 LLM 生成答案。</p>
+<ul>
+<li>通俗类比： 开卷考试。LLM 是考生，外部知识库是参考书。考生先查书，再结合书里的内容回答问题，减少瞎编。</li>
+<li>解决痛点： <strong>解决知识过时、私有数据缺失、幻觉问题。</strong></li>
+<li>核心难点： 检索的准确率（Recall）。如果查不到相关资料，LLM 还是会瞎编。</li>
+<li>应用场景： 企业<strong>知识库</strong>问答、法律&#x2F;医疗<strong>咨询</strong>（需要依据）。</li>
+</ul>
+<h2 id="6-Fine-tuning-微调-vs-Prompt-Engineering-提示词工程"><a href="#6-Fine-tuning-微调-vs-Prompt-Engineering-提示词工程" class="headerlink" title="6. Fine-tuning (微调) vs. Prompt Engineering (提示词工程)"></a>6. Fine-tuning (微调) vs. Prompt Engineering (提示词工程)</h2><ul>
+<li>Prompt： 通过<strong>优化输入指令</strong>来引导模型，不改模型参数。</li>
+<li>Fine-tuning： 用特定领域数据<strong>重新训练模型部分参数</strong>，让模型“学会”新风格或新知识。</li>
+<li>微调： 像送员工去进修，改变他的思维模式（成本高，周期长，但能掌握深层行业逻辑）。<br>   数据门槛： 微调需要高质量标注数据，这是 PM 需要协调资源的重点。</li>
+</ul>
+<h2 id="7-AI-Agent-智能体"><a href="#7-AI-Agent-智能体" class="headerlink" title="7. AI Agent (智能体)"></a>7. AI Agent (智能体)</h2><blockquote>能够自主感知、规划、使用工具并执行任务的 LLM 系统。</blockquote>
+
+<ul>
+<li>核心组件： <strong>规划</strong> (Planning)、<strong>记忆</strong> (Memory)、<strong>工具使用</strong> (Tools)。</li>
+<li>应用趋势： 2025-2026 年的主流方向。从 Chatbot (问答) 转向 Copilot (辅助) 再到 Agent (自主执行)。</li>
+</ul>
+<h2 id="8-Vector-Database-向量数据库"><a href="#8-Vector-Database-向量数据库" class="headerlink" title="8. Vector Database (向量数据库)"></a>8. Vector Database (向量数据库)</h2><p>专门存储“向量 <code>embeddings</code>”的数据库，用于语义检索。</p>
+<ul>
+<li>通俗类比： 传统的关键词搜索是“找完全一样的字”；向量搜索是“找意思相近的词”。比如搜“苹果”，能搜出“水果”甚至“手机”（取决于语境）。<ul>
+<li>RAG 的基石： 没有向量库，RAG 就无法进行语义匹配。</li>
+<li>Embeddings： 把文字变成一串数字（向量），距离越近意思越像。</li>
+</ul>
+</li>
+</ul>
+<h1 id="三、优化与性能层：怎么降本增效？"><a href="#三、优化与性能层：怎么降本增效？" class="headerlink" title="三、优化与性能层：怎么降本增效？"></a>三、优化与性能层：怎么降本增效？</h1><h2 id="9-KV-Cache"><a href="#9-KV-Cache" class="headerlink" title="9. KV Cache"></a>9. KV Cache</h2><p>在生成过程中，缓存之前计算过的 Key 和 Value 矩阵，避免重复计算。</p>
+<ul>
+<li>价值： 极大提升生成<strong>速度</strong>，降低延迟 (Latency)。</li>
+<li>代价： <strong>占用显存</strong> (GPU Memory)。长上下文会导致显存爆炸，这是限制 Context Window 的主要瓶颈之一。</li>
+</ul>
+<h2 id="10-MoE-Mixture-of-Experts-混合专家模型"><a href="#10-MoE-Mixture-of-Experts-混合专家模型" class="headerlink" title="10. MoE (Mixture of Experts, 混合专家模型)"></a>10. MoE (Mixture of Experts, 混合专家模型)</h2><p>一个大模型里包含多个 <strong>“专家”子网络</strong> ，每次只激活其中一部分来处理特定问题。 </p>
+<ul>
+<li>通俗类比： 医院挂号。头痛挂神经科，脚痛挂骨科。不需要全科医生（全参数模型）每次都全体出动，谁擅长谁上。</li>
+<li>优势： 在参数量巨大的情况下，保持推理速度快、成本低（因为每次只用了部分参数）。</li>
+<li>代表模型： Mixtral, Grok, Google Gemini 等都在用。</li>
+</ul>
+<h2 id="11-Quantization-量化"><a href="#11-Quantization-量化" class="headerlink" title="11. Quantization (量化)"></a>11. Quantization (量化)</h2><p>降低模型参数的精度（如从 16 位浮点数降到 4 位整数），以<strong>减小模型体积</strong>。<br>    - 通俗类比： 把高清原图压缩成 JPG，画质稍微损失一点，但文件小了 4 倍，传输更快。</p>
+<h1 id="四、安全与评估层"><a href="#四、安全与评估层" class="headerlink" title="四、安全与评估层"></a>四、安全与评估层</h1><h2 id="12-RLHF-Reinforcement-Learning-from-Human-Feedback-基于人类反馈的强化学习"><a href="#12-RLHF-Reinforcement-Learning-from-Human-Feedback-基于人类反馈的强化学习" class="headerlink" title="12. RLHF (Reinforcement Learning from Human Feedback, 基于人类反馈的强化学习)"></a>12. RLHF (Reinforcement Learning from Human Feedback, 基于人类反馈的强化学习)</h2><p>让人类对模型输出打分，训练一个奖励模型，引导 LLM 生成更符合人类价值观的内容。</p>
+<ul>
+<li><strong>对齐 (Alignment)</strong>： 解决模型“有毒”、“偏见”问题的核心技术手段。</li>
+<li>成本： 需要大量高质量人工标注，非常贵。</li>
+</ul>
+<h2 id="13-Prompt-Injection-提示词注入-Jailbreak-越狱"><a href="#13-Prompt-Injection-提示词注入-Jailbreak-越狱" class="headerlink" title="13. Prompt Injection (提示词注入) &amp; Jailbreak (越狱)"></a>13. Prompt Injection (提示词注入) &amp; Jailbreak (越狱)</h2><p>用户通过特殊的指令欺骗模型，绕过安全限制，让它输出有害内容。</p>
+<ul>
+<li>通俗类比： 骗守卫开门。不说“我要进去偷东西”，而说“我是维修工，老板让我进去修水管”（社会工程学攻击）。</li>
+</ul>
+<h2 id="14-Evaluation-Metrics-评估指标"><a href="#14-Evaluation-Metrics-评估指标" class="headerlink" title="14. Evaluation Metrics (评估指标)"></a>14. Evaluation Metrics (评估指标)</h2><p>怎么知道模型好不好？</p>
+<ul>
+<li>传统 NLP： 准确率、召回率、F1。<br>GenAI 特有：</li>
+<li>忠实度 (Faithfulness)： 回答是否基于检索内容？</li>
+<li>相关性 (Relevance)： 回答是否解决了问题？</li>
+</ul>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><ul>
+<li><strong>Diffusion Model（扩散模型）</strong> 是一种生成式 AI 模型，它通过模拟“从噪声中逐渐还原出清晰图像”的过程，来生成高质量的图片、音频或视频。<ul>
+<li>它是目前 Midjourney、Stable Diffusion、DALL-E 3 等主流绘图工具的底层核心技术。</li>
+<li>应用场景主要有文生图、文生视频、图像编辑、超分辨率等。</li>
+</ul>
+</li>
+</ul>
+<h2 id="分析不同定位"><a href="#分析不同定位" class="headerlink" title="分析不同定位"></a>分析不同定位</h2><p>目前国内大模型已形成明显的差异化竞争格局：</p>
+<ul>
+<li>Kimi是长文本与深度阅读的专家；解决了传统模型“读了后面忘前面”的问题</li>
+<li>DeepSeek是极致性价比与硬核推理的极客首选；让中小型企业也能用得起大模型。对于代码生成、数学解题、逻辑推理这类硬任务，DeepSeek 的表现往往优于很多闭源模型。</li>
+<li>千问是全栈能力与生态整合的企业级全能手；“云 + 端 + 场景”的闭环（B端）</li>
+<li>豆包则是面向大众用户的 AI 生活伴侣与流量入口。语音对话流畅度、多模态玩法。</li>
+</ul>
+<h2 id="分析单一产品"><a href="#分析单一产品" class="headerlink" title="分析单一产品"></a>分析单一产品</h2><blockquote>分析一款 AI 工具，比如 Cursor，你觉得它成功的原因是什么？</blockquote>
+
+<p>Cursor 的成功在于它没有把 AI 当作一个“聊天插件”塞进编辑器，而是以 AI 为核心原生重构了代码编辑的全流程，实现了从“辅助输入”到“自主代理（Agent）”的范式转移，完美解决了开发者对上下文缺失和信任成本的两大痛点。</p>
+<ul>
+<li>GitHub Copilot 只是 VS Code 的一个插件，起初感知不到整个项目结构，交互也受限。（现在也可以联系上下文）</li>
+<li>Cursor 的核心护城河不是模型（它用的是通用的 Claude&#x2F;GPT-4），而是它处理私有代码上下文的能力。对于 B 端产品，RAG（检索增强生成）的精度直接决定用户体验。</li>
+</ul>
+</div><div class="post-end"><div class="post-prev"><a href="/2026/03/29/spring-comming/" title="上一篇文章"><i class="fa-solid fa-chevron-left fa-lg"></i></a></div><div class="post-next"><a href="/2026/01/14/why-i-hate-se/" title="下一篇文章"><i class="fa-solid fa-chevron-right fa-lg"></i></a></div></div></article><div id="post-toc"><aside class="toc-aside"><div class="toc-title"><span><i class="fa-solid fa-paw"></i>目录</span></div><div class="toc-container" id="toc-body"><ol class="toc-content"><li class="toc-content-item toc-content-level-1"><a class="toc-content-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E5%B1%82"><span class="toc-content-number">1.</span> <span class="toc-content-text">一、基础层</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#1-LLM-Large-Language-Model-%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B"><span class="toc-content-number">1.1.</span> <span class="toc-content-text">1. LLM (Large Language Model, 大语言模型)</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#2-Token"><span class="toc-content-number">1.2.</span> <span class="toc-content-text">2. Token</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#3-Transformer-Attention-Mechanism-%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6"><span class="toc-content-number">1.3.</span> <span class="toc-content-text">3. Transformer &amp; Attention Mechanism (注意力机制)</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#4-BERT-vs-LLM-GPT-%E7%B1%BB"><span class="toc-content-number">1.4.</span> <span class="toc-content-text">4. BERT vs. LLM (GPT 类)</span></a></li></ol></li><li class="toc-content-item toc-content-level-1"><a class="toc-content-link" href="#%E4%BA%8C%E3%80%81%E6%9E%B6%E6%9E%84%E5%B1%82%EF%BC%9A%E5%A6%82%E4%BD%95%E8%AE%A9%E6%A8%A1%E5%9E%8B%E6%9B%B4%E8%81%AA%E6%98%8E%EF%BC%9F"><span class="toc-content-number">2.</span> <span class="toc-content-text">二、架构层：如何让模型更聪明？</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#5-RAG-Retrieval-Augmented-Generation-%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA%E7%94%9F%E6%88%90"><span class="toc-content-number">2.1.</span> <span class="toc-content-text">5.RAG (Retrieval-Augmented Generation, 检索增强生成)</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#6-Fine-tuning-%E5%BE%AE%E8%B0%83-vs-Prompt-Engineering-%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%B7%A5%E7%A8%8B"><span class="toc-content-number">2.2.</span> <span class="toc-content-text">6. Fine-tuning (微调) vs. Prompt Engineering (提示词工程)</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#7-AI-Agent-%E6%99%BA%E8%83%BD%E4%BD%93"><span class="toc-content-number">2.3.</span> <span class="toc-content-text">7. AI Agent (智能体)</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#8-Vector-Database-%E5%90%91%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-content-number">2.4.</span> <span class="toc-content-text">8. Vector Database (向量数据库)</span></a></li></ol></li><li class="toc-content-item toc-content-level-1"><a class="toc-content-link" href="#%E4%B8%89%E3%80%81%E4%BC%98%E5%8C%96%E4%B8%8E%E6%80%A7%E8%83%BD%E5%B1%82%EF%BC%9A%E6%80%8E%E4%B9%88%E9%99%8D%E6%9C%AC%E5%A2%9E%E6%95%88%EF%BC%9F"><span class="toc-content-number">3.</span> <span class="toc-content-text">三、优化与性能层：怎么降本增效？</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#9-KV-Cache"><span class="toc-content-number">3.1.</span> <span class="toc-content-text">9. KV Cache</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#10-MoE-Mixture-of-Experts-%E6%B7%B7%E5%90%88%E4%B8%93%E5%AE%B6%E6%A8%A1%E5%9E%8B"><span class="toc-content-number">3.2.</span> <span class="toc-content-text">10. MoE (Mixture of Experts, 混合专家模型)</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#11-Quantization-%E9%87%8F%E5%8C%96"><span class="toc-content-number">3.3.</span> <span class="toc-content-text">11. Quantization (量化)</span></a></li></ol></li><li class="toc-content-item toc-content-level-1"><a class="toc-content-link" href="#%E5%9B%9B%E3%80%81%E5%AE%89%E5%85%A8%E4%B8%8E%E8%AF%84%E4%BC%B0%E5%B1%82"><span class="toc-content-number">4.</span> <span class="toc-content-text">四、安全与评估层</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#12-RLHF-Reinforcement-Learning-from-Human-Feedback-%E5%9F%BA%E4%BA%8E%E4%BA%BA%E7%B1%BB%E5%8F%8D%E9%A6%88%E7%9A%84%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0"><span class="toc-content-number">4.1.</span> <span class="toc-content-text">12. RLHF (Reinforcement Learning from Human Feedback, 基于人类反馈的强化学习)</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#13-Prompt-Injection-%E6%8F%90%E7%A4%BA%E8%AF%8D%E6%B3%A8%E5%85%A5-Jailbreak-%E8%B6%8A%E7%8B%B1"><span class="toc-content-number">4.2.</span> <span class="toc-content-text">13. Prompt Injection (提示词注入) &amp; Jailbreak (越狱)</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#14-Evaluation-Metrics-%E8%AF%84%E4%BC%B0%E6%8C%87%E6%A0%87"><span class="toc-content-number">4.3.</span> <span class="toc-content-text">14. Evaluation Metrics (评估指标)</span></a></li></ol></li><li class="toc-content-item toc-content-level-1"><a class="toc-content-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-content-number">5.</span> <span class="toc-content-text">应用</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%E5%88%86%E6%9E%90%E4%B8%8D%E5%90%8C%E5%AE%9A%E4%BD%8D"><span class="toc-content-number">5.1.</span> <span class="toc-content-text">分析不同定位</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%E5%88%86%E6%9E%90%E5%8D%95%E4%B8%80%E4%BA%A7%E5%93%81"><span class="toc-content-number">5.2.</span> <span class="toc-content-text">分析单一产品</span></a></li></ol></li></ol></div></aside><div class="toc-blank" onclick="tocToggle()"></div></div></div></div><div id="tool-bar"><div id="tool-bar-main"><div id="tool-toggle" onclick="toolToggle()" title="设置"><i class="fa-solid fa-gear"></i></div><div id="toc-toggle" onclick="tocToggle()" title="目录"><i class="fa-solid fa-list-ul"></i></div><div id="back-to-top" onclick="scrollToTop()" title="返回顶部"><i class="fa-solid fa-chevron-up"></i></div></div><div id="tool-bar-more" style="display: none;"><div id="darkmode-switch" onclick="darkmodeSwitch()" title="深色模式"><i class="fa-solid fa-circle-half-stroke"></i></div><div id="font-size-increase" onclick="fontSizeIncrease()" title="放大字体"><i class="fa-solid fa-plus"></i></div><div id="font-size-decrease" onclick="fontSizeDecrease()" title="缩小字体"><i class="fa-solid fa-minus"></i></div></div></div><div id="search-panel"><div class="search-container"><div class="search-head"><div class="search-title"><span><i class="fa-solid fa-paw"></i>搜索</span></div><div class="search-close-btn" onclick="toggleSearchWindow()"><i class="fa-regular fa-circle-xmark"></i></div></div><div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="search-input" type="text" placeholder="请输入需要搜索的内容……" value=""/></div><div class="search-body"><div id="search-count">匹配结果数: </div><div id="search-result"></div><div id="search-result-empty">未搜索到匹配的文章。</div></div></div></div><footer><div class="footer-content"><div class="copyright-info"><i class="fa-regular fa-copyright fa-xs"></i><span>2026 </span><a href="/about">Yule</a><i class="fa-solid fa-cat fa-sm"></i><span>Powered by </span><a href="https://hexo.io/" target="_blank">Hexo</a><span> &amp; </span><a href="https://github.com/chanwj/hexo-theme-meow" target="_blank" title="v2.1.5">Theme Meow</a></div><div class="pageview-site"><span id="busuanzi_container_site_pv">总访问量 : <span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner"></i></span></span><span id="busuanzi_container_site_uv">总访客数 : <span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner"></i></span></span></div></div></footer>
+<script>const GLOBAL_CONFIG = {
+  comment: { theme: ''}
+}
+</script>
+<script src="/js/third-party/darkmode.js"></script>
+<script>var options = {
+  dark: '/css/darkmode.css',
+  startAt: '24:00',
+  endAt: '06:00',
+  checkSystemScheme: 'false',
+  saveOnToggle: 'true'
+};
+var darkMode = new DarkMode(options);
+// change comment theme synchronously 同步修改评论区主题
+if (darkMode.getMode() == "dark" && (false || false)) {
+  if (document.getElementById('comment')) {
+    document.getElementById('comment').getElementsByTagName('script')[0].setAttribute('data-theme', 'noborder_dark');
+  }
+}
+</script><script>if (localStorage.getItem('font-size')) {
+  document.querySelector('.post-content').style.fontSize = localStorage.getItem('font-size') + 'px';
+}
+</script>
+<script src="/js/theme/tool-bar.js"></script>
+
+
+<script src="/js/theme/menu.js"></script>
+
+
+<script src="/js/third-party/clipboard.min.js"></script>
+
+
+<script src="/js/theme/copy.js"></script>
+<script>copyCode();
+</script>
+<script src="/js/jquery-3.7.1.min.js"></script>
+
+
+<script src="/js/theme/search.js"></script>
+<script>searchFunc('/search.xml', 'search-input', 'search-result');
+</script></body></html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="author" content="Yule"/><meta name="keyword"/><meta name="description" content="九乡河文理学院&#x2F;苏州校区&#x2F;NULL学院&#x2F;甲辰年-乙巳年春学期&#x2F;计算机网络之各层协议整理 个人复习的时候这些总是搞混，所以整理了一些">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络之各层协议整理">
+<meta property="og:url" content="https://yule184.github.io/2026/01/14/internet-protoco/index.html">
+<meta property="og:site_name" content="少年游">
+<meta property="og:description" content="九乡河文理学院&#x2F;苏州校区&#x2F;NULL学院&#x2F;甲辰年-乙巳年春学期&#x2F;计算机网络之各层协议整理 个人复习的时候这些总是搞混，所以整理了一些">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-01-14T05:39:48.000Z">
+<meta property="article:modified_time" content="2026-04-20T06:25:34.768Z">
+<meta property="article:author" content="Yule">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary"><title>计算机网络之各层协议整理 - 欲买桂花同载酒 - 终不似 少年游</title><link rel="shortcut icon" href="/img/site-icon.png">
+<link rel="stylesheet" href="/css/style.css" id="dm-light">
+
+
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+<meta name="generator" content="Hexo 8.1.1"></head><body><header><div class="top-nav" ondblclick="scrollToTop()"><div class="nav-info"><div class="nav-icon"><img id="nav-icon" src="/img/site-icon.png"/></div><div class="nav-title"><a id="nav-title" href="/" title="主页">少年游</a></div></div><div class="nav-ribbon"><div class="top-menu-expanded"><a class="top-menu-item" href="/archives"><span>归档</span></a><a class="top-menu-item" href="/categories"><span>分类</span></a><a class="top-menu-item" href="/tags"><span>标签</span></a><a class="top-menu-item" href="/about"><span>关于</span></a></div><div class="top-search" onclick="toggleSearchWindow()"><div id="top-search-btn" title="搜索"><i class="icon fa-solid fa-magnifying-glass"></i><span>搜索</span></div></div><div id="top-menu-btn" onclick="openTopMenu()" title="打开菜单"><i class="fa-solid fa-bars fa-lg"></i></div></div></div></header><div id="top-menu-hidden"><div class="menu-hidden-content"><div class="menu-hidden-nav"><a class="menu-hidden-item" href="/archives"><i class="fa-solid fa-box-archive fa-sm"></i><span>归档</span></a><a class="menu-hidden-item" href="/categories"><i class="fa-regular fa-folder-open fa-sm"></i><span>分类</span></a><a class="menu-hidden-item" href="/tags"><i class="fa-solid fa-tags fa-sm"></i><span>标签</span></a><a class="menu-hidden-item" href="/about"><i class="fa-solid fa-paw fa-sm"></i><span>关于</span></a></div></div><div class="menu-hidden-blank" onclick="closeTopMenu()"></div></div>
+<div class="blog-info"><div class="blog-pic"><img id="blog-pic" src="/img/site-icon.png"/></div><div class="blog-title"><i class="fa-solid fa-paw fa-2xs fa-rotate-by"></i><span>欲买桂花同载酒</span><i class="fa-solid fa-paw fa-2xs fa-rotate-by"></i></div><div class="blog-desc">一个想从软件工程跑路的软工菜鸡和构史学家的个人博客</div></div><div class="main"><div class="main-content"><article class="post"><div class="post-title"><h1><i class="fa-solid fa-paw"></i>计算机网络之各层协议整理</h1></div><div class="post-info"><div class="post-info-first-line"><div class="post-date"><i class="icon fa-regular fa-calendar-plus" title="发布日期"></i><time class="publish-time">2026-01-14</time><i class="icon fa-regular fa-calendar-check" title="更新日期"></i><time class="update-time">2026-04-20</time></div>
+<div class="post-categories"><i class="icon fa-regular fa-folder-open" title="分类"></i><a class="post-category" href="/categories/%E5%A4%A7%E4%BA%8C/">大二</a></div>
+<div class="post-tags"><i class="icon fa-solid fa-tags" title="标签"></i><a class="post-tag" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a><i class="icon fa-solid fa-tags" title="标签"></i><a class="post-tag" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></div></div><div class="post-info-second-line"><div class="post-copyright"><i class="icon fa-brands fa-creative-commons" title="版权声明"></i><span>版权声明: </span><a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans" title="CC BY-NC-ND 4.0">署名-非商业性使用-禁止演绎 4.0</a></div>
+<div class="post-word-count"><i class="icon fa-solid fa-pen-to-square"></i><span>全文约2.6K字</span></div><div class="pageview-post"><i class="icon fa-regular fa-eye"></i><span id="busuanzi_container_page_pv">阅读次数: <span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner"></i></span></span></div></div></div><div class="post-content"><p>九乡河文理学院&#x2F;苏州校区&#x2F;NULL学院&#x2F;甲辰年-乙巳年春学期&#x2F;计算机网络之各层协议整理</p>
+<p>个人复习的时候这些总是搞混，所以整理了一些</p>
+<span id="more"></span>
+
+<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><blockquote class="green">内容整合了课件、课本、GPT老师和DS老师</blockquote>
+
+<h2 id="1-应用层（Application-Layer）"><a href="#1-应用层（Application-Layer）" class="headerlink" title="1. 应用层（Application Layer）"></a>1. 应用层（Application Layer）</h2><p><strong>功能</strong>：直接为用户进程提供服务，定义应用间通信的规则（报文格式、动作语义）。</p>
+<p><strong>典型协议</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>用途</th>
+<th>依赖的传输层协议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HTTP</td>
+<td>网页浏览（Web）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>加密的HTTP（安全网页）</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>FTP</td>
+<td>文件传输</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>SMTP</td>
+<td>电子邮件发送</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>POP3&#x2F;IMAP</td>
+<td>电子邮件接收</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>DNS</td>
+<td>域名解析（域名→IP）</td>
+<td>UDP&#x2F;TCP</td>
+</tr>
+<tr>
+<td>DHCP</td>
+<td>动态分配IP地址</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>安全远程登录</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>RTP</td>
+<td>实时音视频传输（如Zoom）</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>SNMP</td>
+<td>网络设备管理</td>
+<td>UDP</td>
+</tr>
+</tbody></table>
+<h2 id="2-运输层（Transport-Layer）"><a href="#2-运输层（Transport-Layer）" class="headerlink" title="2. 运输层（Transport Layer）"></a>2. 运输层（Transport Layer）</h2><p><strong>功能</strong>：提供<strong>端到端</strong>（进程到进程）的通信，区分可靠性与实时性需求。</p>
+<p><strong>核心协议</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TCP</td>
+<td>可靠传输、面向连接、流量控制</td>
+<td>网页（HTTP）、邮件（SMTP）等</td>
+</tr>
+<tr>
+<td>UDP</td>
+<td>不可靠但高效、无连接</td>
+<td>DNS、视频流、VoIP等</td>
+</tr>
+<tr>
+<td>SCTP</td>
+<td>多路径传输（特殊场景）</td>
+<td>电信网络</td>
+</tr>
+</tbody></table>
+<h2 id="3-网络层（Network-Layer）"><a href="#3-网络层（Network-Layer）" class="headerlink" title="3. 网络层（Network Layer）"></a>3. 网络层（Network Layer）</h2><p><strong>功能</strong>：实现<strong>主机到主机</strong>的通信，负责路由选择与分组转发。</p>
+<ul>
+<li>只有IP协议，其他都算中间件<em>middle box</em></li>
+</ul>
+<p><strong>核心协议&#x2F;技术</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>协议&#x2F;技术</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IP (IPv4&#x2F;IPv6)</td>
+<td>数据包的路由与寻址（核心协议）</td>
+</tr>
+<tr>
+<td>ICMP</td>
+<td>网络状态诊断（如<code>ping</code>、<code>traceroute</code>）</td>
+</tr>
+<tr>
+<td>IGMP</td>
+<td>组播管理</td>
+</tr>
+<tr>
+<td>OSPF&#x2F;BGP</td>
+<td>动态路由协议（内部&#x2F;外部网关协议）</td>
+</tr>
+<tr>
+<td>ARP</td>
+<td>IP地址→MAC地址解析（虽属链路层，但服务于网络层）</td>
+</tr>
+</tbody></table>
+<h2 id="4-链路层（Data-Link-Layer）"><a href="#4-链路层（Data-Link-Layer）" class="headerlink" title="4. 链路层（Data Link Layer）"></a>4. 链路层（Data Link Layer）</h2><p><strong>功能</strong>：解决<strong>相邻节点</strong>（直连设备）的帧传输，处理物理寻址与差错控制。</p>
+<p><strong>典型协议&#x2F;技术</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>协议&#x2F;技术</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>以太网（Ethernet）</td>
+<td>有线局域网（LAN）标准</td>
+</tr>
+<tr>
+<td>Wi-Fi (802.11)</td>
+<td>无线局域网</td>
+</tr>
+<tr>
+<td>PPP</td>
+<td>点对点链路（如拨号上网）</td>
+</tr>
+<tr>
+<td>MAC协议</td>
+<td>控制物理介质访问（如CSMA&#x2F;CD）</td>
+</tr>
+<tr>
+<td>VLAN</td>
+<td>虚拟局域网划分</td>
+</tr>
+<tr>
+<td>HDLC</td>
+<td>广域网帧封装</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="协议与层级关系图示"><a href="#协议与层级关系图示" class="headerlink" title="协议与层级关系图示"></a><strong>协议与层级关系图示</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">应用层  → HTTP, FTP, DNS...  </span><br><span class="line">          ↓  </span><br><span class="line">运输层  → TCP, UDP  </span><br><span class="line">          ↓  </span><br><span class="line">网络层  → IP, ICMP, OSPF  </span><br><span class="line">          ↓  </span><br><span class="line">链路层  → Ethernet, Wi-Fi, ARP  </span><br><span class="line">          ↓  </span><br><span class="line">物理层  → 比特流传输（无具体协议）</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="关键记忆点"><a href="#关键记忆点" class="headerlink" title="关键记忆点"></a><strong>关键记忆点</strong></h3><ol>
+<li><strong>应用层</strong>：面向用户，协议定义“做什么”（如HTTP请求网页）。</li>
+<li><strong>运输层</strong>：区分“可靠与否”（TCP&#x2F;UDP），端口号定位进程。</li>
+<li><strong>网络层</strong>：IP地址全局寻址，路由协议决定路径。</li>
+<li><strong>链路层</strong>：MAC地址局部寻址，帧传输相邻节点。</li>
+</ol>
+<p><strong>特殊注意</strong>：</p>
+<ul>
+<li><strong>ARP</strong>虽在链路层实现，但服务于网络层（IP→MAC）。</li>
+<li><strong>DNS</strong>在应用层，但通常基于UDP传输。</li>
+</ul>
+<hr>
+<p>在网络层的数据平面中，基于目的地转发需要路由器使用转发表来查找输出端口，使到达的分组能经过交换结构转发到该输出端口。转发表<code>forward table</code>是由路由选择处理器计算和更新或者接受来自远程<code>SDN</code>控制器的内容，表项是前缀匹配和链路接口。链路层的地址解析协议<code>ARP</code>是将<code>IP</code>地址到<code>MAC</code>地址的转换，表项为<code>IP</code>地址、<code>MAC</code>地址、<code>TTL</code>而链路层交换机的过滤：决定一个帧应该转发到某个接口还是应该将其丢弃；转发：决定一个帧应该被导向哪个接口并把该帧移动到那些接口的交换机功能。它们借助于交换机表<code>switch table</code>，表项包括<code>MAC</code>地址，通向该<code>MAC</code>地址的交换机接口，表项放在表中的时间。</p>
+<hr>
+<blockquote class="green">来自GPT</blockquote>
+
+
+<h2 id="🌐-整体传输路径概览"><a href="#🌐-整体传输路径概览" class="headerlink" title="🌐 整体传输路径概览"></a>🌐 整体传输路径概览</h2><blockquote>
+<p>（从发送方主机到接收方主机）</p>
+</blockquote>
+<p>我们以一个典型的例子来讲：一台主机A要通过因特网给远程主机B发送一个IP数据包。</p>
+<p>这一路上，数据会经历：</p>
+<pre><code>主机A ——&gt; 本地交换机 ——&gt; 本地路由器 ——&gt; ……（可能很多中间路由器）…… ——&gt; 接收方路由器 ——&gt; 接收主机B
+</code></pre>
+<p>沿途，我们会见到这三种表：</p>
+<table>
+<thead>
+<tr>
+<th>表名</th>
+<th>所属层</th>
+<th>存在设备</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ARP表</td>
+<td>链路层</td>
+<td>主机、路由器</td>
+<td>查IP得MAC地址（用于本地链路发送）</td>
+</tr>
+<tr>
+<td>交换机表（Switch Table）</td>
+<td>链路层</td>
+<td>交换机</td>
+<td>查MAC得接口，实现帧转发</td>
+</tr>
+<tr>
+<td>转发表（Forwarding Table）</td>
+<td>网络层</td>
+<td>路由器</td>
+<td>查目的IP得下一跳&#x2F;输出端口</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🧭-数据走过每个设备时，谁在起作用？"><a href="#🧭-数据走过每个设备时，谁在起作用？" class="headerlink" title="🧭 数据走过每个设备时，谁在起作用？"></a>🧭 数据走过每个设备时，谁在起作用？</h2><h3 id="1️⃣-主机A准备发送IP包"><a href="#1️⃣-主机A准备发送IP包" class="headerlink" title="1️⃣ 主机A准备发送IP包"></a><strong>1️⃣ 主机A准备发送IP包</strong></h3><p>主机A要把包发往IP地址为B的主机，它会：</p>
+<ul>
+<li><p>查路由表（主机也有简单路由表）判断这个目标IP是不是同一网段：</p>
+<ul>
+<li>如果是同一网段 → 下一跳就是主机B</li>
+<li>如果不是 → 下一跳是默认网关（即本地路由器）</li>
+</ul>
+</li>
+<li><p>得到“下一跳IP”后，要通过<strong>ARP表</strong>获取下一跳的<strong>MAC地址</strong>：</p>
+<ul>
+<li>如果ARP表中没有该IP对应的MAC地址，就要发ARP请求，解析出来后放进ARP表中。</li>
+</ul>
+</li>
+<li><p>封装好MAC头后，把数据交给网卡发出。</p>
+</li>
+</ul>
+<p>✅ <strong>此时工作的是：ARP表（主机A）</strong></p>
+<hr>
+<h3 id="2️⃣-交换机接收到这个帧"><a href="#2️⃣-交换机接收到这个帧" class="headerlink" title="2️⃣ 交换机接收到这个帧"></a><strong>2️⃣ 交换机接收到这个帧</strong></h3><ul>
+<li><p>交换机收到以太帧，会提取帧头的目的MAC地址；</p>
+</li>
+<li><p>在自己的<strong>交换机表（MAC表）</strong> 中查这个MAC该走哪个端口；</p>
+<ul>
+<li>查到了就转发；</li>
+<li>没查到就广播；</li>
+</ul>
+</li>
+<li><p>同时记录源MAC地址和接口，以备将来使用。</p>
+</li>
+</ul>
+<p>✅ <strong>此时工作的是：交换机表（switch table）</strong></p>
+<hr>
+<h3 id="3️⃣-路由器收到这个帧"><a href="#3️⃣-路由器收到这个帧" class="headerlink" title="3️⃣ 路由器收到这个帧"></a><strong>3️⃣ 路由器收到这个帧</strong></h3><ul>
+<li><p>路由器先通过帧头的目的MAC判断“帧是给我的”；</p>
+</li>
+<li><p>接着剥掉帧头，得到IP包；</p>
+</li>
+<li><p>用<strong>转发表（forwarding table）</strong> 查找目标IP该往哪条路径发：</p>
+<ul>
+<li>查找最长前缀匹配</li>
+<li>得到“下一跳IP”和输出端口</li>
+</ul>
+</li>
+<li><p>然后需要再次查ARP表，把“下一跳IP”转换为MAC地址</p>
+</li>
+<li><p>构造新的帧，再发送出去</p>
+</li>
+</ul>
+<p>✅ <strong>此时工作的是：</strong></p>
+<ul>
+<li>网络层的<strong>转发表（路由器）</strong>：查目的IP决定下一跳&#x2F;端口；</li>
+<li>链路层的<strong>ARP表（路由器）</strong>：查下一跳IP得到MAC地址；</li>
+</ul>
+<hr>
+<h3 id="4️⃣-中间交换机们继续用MAC地址转发"><a href="#4️⃣-中间交换机们继续用MAC地址转发" class="headerlink" title="4️⃣ 中间交换机们继续用MAC地址转发"></a><strong>4️⃣ 中间交换机们继续用MAC地址转发</strong></h3><p>重复前面的交换机查MAC流程。</p>
+<p>✅ <strong>继续用交换机表（switch table）</strong></p>
+<hr>
+<h3 id="5️⃣-到达目标主机"><a href="#5️⃣-到达目标主机" class="headerlink" title="5️⃣ 到达目标主机"></a><strong>5️⃣ 到达目标主机</strong></h3><p>目标主机收到帧后会解封装，交给操作系统网络栈处理。</p>
+<hr>
+<h2 id="🧠-总结对比：三个表的对照"><a href="#🧠-总结对比：三个表的对照" class="headerlink" title="🧠 总结对比：三个表的对照"></a>🧠 总结对比：三个表的对照</h2><table>
+<thead>
+<tr>
+<th>表名</th>
+<th>所在设备</th>
+<th>所在层</th>
+<th>查询依据</th>
+<th>得到什么</th>
+<th>何时用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ARP表</td>
+<td>主机&#x2F;路由器</td>
+<td>链路层</td>
+<td>IP地址</td>
+<td>MAC地址</td>
+<td>发帧前</td>
+</tr>
+<tr>
+<td>转发表</td>
+<td>路由器</td>
+<td>网络层</td>
+<td>目标IP地址</td>
+<td>下一跳IP + 端口</td>
+<td>路由时</td>
+</tr>
+<tr>
+<td>交换机表</td>
+<td>交换机</td>
+<td>链路层</td>
+<td>MAC地址</td>
+<td>接口（输出端口）</td>
+<td>帧中继</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="📌-谁先谁后？"><a href="#📌-谁先谁后？" class="headerlink" title="📌 谁先谁后？"></a>📌 谁先谁后？</h2><p>在一个具体设备里，它们会协同工作：</p>
+<ul>
+<li><strong>主机：先查路由表 → 查ARP表 → 发帧</strong></li>
+<li><strong>交换机：不关心IP，只管MAC → 查交换机表转发帧</strong></li>
+<li><strong>路由器：收帧→拆封→查转发表→查ARP→再发帧</strong></li>
+</ul>
+<hr>
+<h2 id="🎯-小贴士：如何记住它们"><a href="#🎯-小贴士：如何记住它们" class="headerlink" title="🎯 小贴士：如何记住它们"></a>🎯 小贴士：如何记住它们</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>关键词</th>
+<th>类比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ARP表</td>
+<td>IP → MAC</td>
+<td>电话簿：查号码找人</td>
+</tr>
+<tr>
+<td>转发表</td>
+<td>IP前缀 → 下一跳接口</td>
+<td>地图导航：决定路线</td>
+</tr>
+<tr>
+<td>交换机表</td>
+<td>MAC → 接口</td>
+<td>快递分拣：送到哪口</td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote class="green">来自Deepseek</blockquote>
+
+
+<h3 id="1-三张表的本质区别"><a href="#1-三张表的本质区别" class="headerlink" title="1. 三张表的本质区别"></a><strong>1. 三张表的本质区别</strong></h3><table>
+<thead>
+<tr>
+<th><strong>表名称</strong></th>
+<th><strong>所在设备</strong></th>
+<th><strong>工作层级</strong></th>
+<th><strong>匹配字段</strong></th>
+<th><strong>输出结果</strong></th>
+<th><strong>核心作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>转发表</strong>（Forwarding Table）</td>
+<td>路由器</td>
+<td>网络层（L3）</td>
+<td>目的IP（最长前缀匹配）</td>
+<td>下一跳IP + 出口接口</td>
+<td>决定IP分组从哪个接口转发到下一跳</td>
+</tr>
+<tr>
+<td><strong>ARP表</strong></td>
+<td>路由器&#x2F;主机</td>
+<td>网络层→链路层</td>
+<td>下一跳IP</td>
+<td>下一跳MAC地址</td>
+<td>将下一跳IP解析为MAC地址</td>
+</tr>
+<tr>
+<td><strong>交换机表</strong>（MAC表）</td>
+<td>交换机</td>
+<td>链路层（L2）</td>
+<td>目的MAC地址</td>
+<td>出口接口（端口号）</td>
+<td>决定帧从哪个物理端口转发</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="2-完整数据传输流程（以主机A-→-主机B为例）"><a href="#2-完整数据传输流程（以主机A-→-主机B为例）" class="headerlink" title="2. 完整数据传输流程（以主机A → 主机B为例）"></a><strong>2. 完整数据传输流程（以主机A → 主机B为例）</strong></h3><p>假设主机A（IP: <code>192.168.1.100</code>）发送数据到主机B（IP: <code>10.1.1.1</code>），路径如下：<strong>主机A → 交换机1 → 路由器 → 交换机2 → 主机B</strong></p>
+<h4 id="阶段1：主机A发送数据"><a href="#阶段1：主机A发送数据" class="headerlink" title="阶段1：主机A发送数据"></a><strong>阶段1：主机A发送数据</strong></h4><ol>
+<li><strong>应用层</strong>：生成数据（如HTTP请求）。</li>
+<li><strong>运输层</strong>：添加TCP头部（源端口: <code>54321</code>，目的端口: <code>80</code>）。</li>
+<li><strong>网络层</strong>：添加IP头部（源IP: <code>192.168.1.100</code>，目的IP: <code>10.1.1.1</code>）。</li>
+<li><strong>链路层</strong>：</li>
+</ol>
+<ul>
+<li><p>主机A需要知道<strong>默认网关（路由器）的MAC地址</strong>（因为主机B不在本地网络）。</p>
+</li>
+<li><p>查ARP表：</p>
+<ul>
+<li>若已有路由器的MAC（如 <code>AA:BB:CC:DD:EE</code>），直接使用。</li>
+<li>若无，发送ARP请求获取。</li>
+</ul>
+</li>
+<li><p>封装帧：</p>
+<pre><code>源MAC: 主机A的MAC (00:1A:2B:3C:4D)  
+目的MAC: 路由器的MAC (AA:BB:CC:DD:EE)
+</code></pre>
+</li>
+</ul>
+<h4 id="阶段2：交换机1转发帧"><a href="#阶段2：交换机1转发帧" class="headerlink" title="阶段2：交换机1转发帧"></a><strong>阶段2：交换机1转发帧</strong></h4><ol>
+<li><strong>交换机1</strong>收到帧，查看目的MAC <code>AA:BB:CC:DD:EE</code>。</li>
+<li><strong>查交换机表（MAC表）</strong>：</li>
+</ol>
+<ul>
+<li>若表中记录 <code>AA:BB:CC:DD:EE</code> 对应端口2，则从端口2转发。</li>
+<li>若无记录，泛洪到所有端口（除接收端口）。</li>
+</ul>
+<ol start="3">
+<li>帧到达路由器。</li>
+</ol>
+<h4 id="阶段3：路由器处理IP分组"><a href="#阶段3：路由器处理IP分组" class="headerlink" title="阶段3：路由器处理IP分组"></a><strong>阶段3：路由器处理IP分组</strong></h4><ol>
+<li><strong>链路层</strong>：路由器收到帧，剥离帧头，检查目的MAC是否匹配自己的接口MAC。</li>
+<li><strong>网络层</strong>：</li>
+</ol>
+<ul>
+<li>提取IP分组，查<strong>转发表</strong>（Forwarding Table）：<ul>
+<li>匹配目的IP <code>10.1.1.1</code> 的最长前缀（如 <code>10.1.1.0/24</code>）。</li>
+<li>得到下一跳IP（如 <code>10.1.1.254</code>）和出口接口（如 <code>eth1</code>）。</li>
+</ul>
+</li>
+<li><strong>修改IP头部</strong>：TTL减1，重新计算校验和。</li>
+</ul>
+<ol start="3">
+<li><strong>链路层</strong>：</li>
+</ol>
+<ul>
+<li><p>查<strong>ARP表</strong>，将下一跳IP <code>10.1.1.254</code> 转为MAC地址（如 <code>66:77:88:99:00</code>）。</p>
+</li>
+<li><p>重新封装帧：</p>
+<pre><code>源MAC: 路由器eth1的MAC (11:22:33:44:55)  
+目的MAC: 下一跳的MAC (66:77:88:99:00)  
+</code></pre>
+</li>
+<li><p>从接口 <code>eth1</code> 发送帧。</p>
+</li>
+</ul>
+<h4 id="阶段4：交换机2转发帧"><a href="#阶段4：交换机2转发帧" class="headerlink" title="阶段4：交换机2转发帧"></a><strong>阶段4：交换机2转发帧</strong></h4><ol>
+<li><strong>交换机2</strong>收到帧，查看目的MAC <code>66:77:88:99:00</code>。</li>
+<li><strong>查交换机表</strong>：</li>
+</ol>
+<ul>
+<li>若记录 <code>66:77:88:99:00</code> 对应端口4，则从端口4转发。</li>
+<li>若无记录，泛洪。</li>
+</ul>
+<ol start="3">
+<li>帧到达主机B。</li>
+</ol>
+<h4 id="阶段5：主机B接收数据"><a href="#阶段5：主机B接收数据" class="headerlink" title="阶段5：主机B接收数据"></a><strong>阶段5：主机B接收数据</strong></h4><ol>
+<li><strong>链路层</strong>：检查目的MAC是否匹配自己的MAC。</li>
+<li><strong>网络层以上</strong>：逐层解封装，最终交付给应用进程。</li>
+</ol>
+</div><div class="post-end"><div class="post-prev"><a href="/2026/01/14/why-i-hate-se/" title="上一篇文章"><i class="fa-solid fa-chevron-left fa-lg"></i></a></div><div class="post-next"><a href="/2026/01/13/operating-system/" title="下一篇文章"><i class="fa-solid fa-chevron-right fa-lg"></i></a></div></div></article><div id="post-toc"><aside class="toc-aside"><div class="toc-title"><span><i class="fa-solid fa-paw"></i>目录</span></div><div class="toc-container" id="toc-body"><ol class="toc-content"><li class="toc-content-item toc-content-level-1"><a class="toc-content-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="toc-content-number">1.</span> <span class="toc-content-text">计算机网络</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#1-%E5%BA%94%E7%94%A8%E5%B1%82%EF%BC%88Application-Layer%EF%BC%89"><span class="toc-content-number">1.1.</span> <span class="toc-content-text">1. 应用层（Application Layer）</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#2-%E8%BF%90%E8%BE%93%E5%B1%82%EF%BC%88Transport-Layer%EF%BC%89"><span class="toc-content-number">1.2.</span> <span class="toc-content-text">2. 运输层（Transport Layer）</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#3-%E7%BD%91%E7%BB%9C%E5%B1%82%EF%BC%88Network-Layer%EF%BC%89"><span class="toc-content-number">1.3.</span> <span class="toc-content-text">3. 网络层（Network Layer）</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#4-%E9%93%BE%E8%B7%AF%E5%B1%82%EF%BC%88Data-Link-Layer%EF%BC%89"><span class="toc-content-number">1.4.</span> <span class="toc-content-text">4. 链路层（Data Link Layer）</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%E5%8D%8F%E8%AE%AE%E4%B8%8E%E5%B1%82%E7%BA%A7%E5%85%B3%E7%B3%BB%E5%9B%BE%E7%A4%BA"><span class="toc-content-number">1.5.</span> <span class="toc-content-text">协议与层级关系图示</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-3"><a class="toc-content-link" href="#%E5%85%B3%E9%94%AE%E8%AE%B0%E5%BF%86%E7%82%B9"><span class="toc-content-number">1.5.1.</span> <span class="toc-content-text">关键记忆点</span></a></li></ol></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%F0%9F%8C%90-%E6%95%B4%E4%BD%93%E4%BC%A0%E8%BE%93%E8%B7%AF%E5%BE%84%E6%A6%82%E8%A7%88"><span class="toc-content-number">1.6.</span> <span class="toc-content-text">🌐 整体传输路径概览</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%F0%9F%A7%AD-%E6%95%B0%E6%8D%AE%E8%B5%B0%E8%BF%87%E6%AF%8F%E4%B8%AA%E8%AE%BE%E5%A4%87%E6%97%B6%EF%BC%8C%E8%B0%81%E5%9C%A8%E8%B5%B7%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-content-number">1.7.</span> <span class="toc-content-text">🧭 数据走过每个设备时，谁在起作用？</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-3"><a class="toc-content-link" href="#1%EF%B8%8F%E2%83%A3-%E4%B8%BB%E6%9C%BAA%E5%87%86%E5%A4%87%E5%8F%91%E9%80%81IP%E5%8C%85"><span class="toc-content-number">1.7.1.</span> <span class="toc-content-text">1️⃣ 主机A准备发送IP包</span></a></li><li class="toc-content-item toc-content-level-3"><a class="toc-content-link" href="#2%EF%B8%8F%E2%83%A3-%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%8E%A5%E6%94%B6%E5%88%B0%E8%BF%99%E4%B8%AA%E5%B8%A7"><span class="toc-content-number">1.7.2.</span> <span class="toc-content-text">2️⃣ 交换机接收到这个帧</span></a></li><li class="toc-content-item toc-content-level-3"><a class="toc-content-link" href="#3%EF%B8%8F%E2%83%A3-%E8%B7%AF%E7%94%B1%E5%99%A8%E6%94%B6%E5%88%B0%E8%BF%99%E4%B8%AA%E5%B8%A7"><span class="toc-content-number">1.7.3.</span> <span class="toc-content-text">3️⃣ 路由器收到这个帧</span></a></li><li class="toc-content-item toc-content-level-3"><a class="toc-content-link" href="#4%EF%B8%8F%E2%83%A3-%E4%B8%AD%E9%97%B4%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BB%AC%E7%BB%A7%E7%BB%AD%E7%94%A8MAC%E5%9C%B0%E5%9D%80%E8%BD%AC%E5%8F%91"><span class="toc-content-number">1.7.4.</span> <span class="toc-content-text">4️⃣ 中间交换机们继续用MAC地址转发</span></a></li><li class="toc-content-item toc-content-level-3"><a class="toc-content-link" href="#5%EF%B8%8F%E2%83%A3-%E5%88%B0%E8%BE%BE%E7%9B%AE%E6%A0%87%E4%B8%BB%E6%9C%BA"><span class="toc-content-number">1.7.5.</span> <span class="toc-content-text">5️⃣ 到达目标主机</span></a></li></ol></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%F0%9F%A7%A0-%E6%80%BB%E7%BB%93%E5%AF%B9%E6%AF%94%EF%BC%9A%E4%B8%89%E4%B8%AA%E8%A1%A8%E7%9A%84%E5%AF%B9%E7%85%A7"><span class="toc-content-number">1.8.</span> <span class="toc-content-text">🧠 总结对比：三个表的对照</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%F0%9F%93%8C-%E8%B0%81%E5%85%88%E8%B0%81%E5%90%8E%EF%BC%9F"><span class="toc-content-number">1.9.</span> <span class="toc-content-text">📌 谁先谁后？</span></a></li><li class="toc-content-item toc-content-level-2"><a class="toc-content-link" href="#%F0%9F%8E%AF-%E5%B0%8F%E8%B4%B4%E5%A3%AB%EF%BC%9A%E5%A6%82%E4%BD%95%E8%AE%B0%E4%BD%8F%E5%AE%83%E4%BB%AC"><span class="toc-content-number">1.10.</span> <span class="toc-content-text">🎯 小贴士：如何记住它们</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-3"><a class="toc-content-link" href="#1-%E4%B8%89%E5%BC%A0%E8%A1%A8%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%8C%BA%E5%88%AB"><span class="toc-content-number">1.10.1.</span> <span class="toc-content-text">1. 三张表的本质区别</span></a></li><li class="toc-content-item toc-content-level-3"><a class="toc-content-link" href="#2-%E5%AE%8C%E6%95%B4%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%B5%81%E7%A8%8B%EF%BC%88%E4%BB%A5%E4%B8%BB%E6%9C%BAA-%E2%86%92-%E4%B8%BB%E6%9C%BAB%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-content-number">1.10.2.</span> <span class="toc-content-text">2. 完整数据传输流程（以主机A → 主机B为例）</span></a><ol class="toc-content-child"><li class="toc-content-item toc-content-level-4"><a class="toc-content-link" href="#%E9%98%B6%E6%AE%B51%EF%BC%9A%E4%B8%BB%E6%9C%BAA%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE"><span class="toc-content-number">1.10.2.1.</span> <span class="toc-content-text">阶段1：主机A发送数据</span></a></li><li class="toc-content-item toc-content-level-4"><a class="toc-content-link" href="#%E9%98%B6%E6%AE%B52%EF%BC%9A%E4%BA%A4%E6%8D%A2%E6%9C%BA1%E8%BD%AC%E5%8F%91%E5%B8%A7"><span class="toc-content-number">1.10.2.2.</span> <span class="toc-content-text">阶段2：交换机1转发帧</span></a></li><li class="toc-content-item toc-content-level-4"><a class="toc-content-link" href="#%E9%98%B6%E6%AE%B53%EF%BC%9A%E8%B7%AF%E7%94%B1%E5%99%A8%E5%A4%84%E7%90%86IP%E5%88%86%E7%BB%84"><span class="toc-content-number">1.10.2.3.</span> <span class="toc-content-text">阶段3：路由器处理IP分组</span></a></li><li class="toc-content-item toc-content-level-4"><a class="toc-content-link" href="#%E9%98%B6%E6%AE%B54%EF%BC%9A%E4%BA%A4%E6%8D%A2%E6%9C%BA2%E8%BD%AC%E5%8F%91%E5%B8%A7"><span class="toc-content-number">1.10.2.4.</span> <span class="toc-content-text">阶段4：交换机2转发帧</span></a></li><li class="toc-content-item toc-content-level-4"><a class="toc-content-link" href="#%E9%98%B6%E6%AE%B55%EF%BC%9A%E4%B8%BB%E6%9C%BAB%E6%8E%A5%E6%94%B6%E6%95%B0%E6%8D%AE"><span class="toc-content-number">1.10.2.5.</span> <span class="toc-content-text">阶段5：主机B接收数据</span></a></li></ol></li></ol></li></ol></li></ol></div></aside><div class="toc-blank" onclick="tocToggle()"></div></div></div></div><div id="tool-bar"><div id="tool-bar-main"><div id="tool-toggle" onclick="toolToggle()" title="设置"><i class="fa-solid fa-gear"></i></div><div id="toc-toggle" onclick="tocToggle()" title="目录"><i class="fa-solid fa-list-ul"></i></div><div id="back-to-top" onclick="scrollToTop()" title="返回顶部"><i class="fa-solid fa-chevron-up"></i></div></div><div id="tool-bar-more" style="display: none;"><div id="darkmode-switch" onclick="darkmodeSwitch()" title="深色模式"><i class="fa-solid fa-circle-half-stroke"></i></div><div id="font-size-increase" onclick="fontSizeIncrease()" title="放大字体"><i class="fa-solid fa-plus"></i></div><div id="font-size-decrease" onclick="fontSizeDecrease()" title="缩小字体"><i class="fa-solid fa-minus"></i></div></div></div><div id="search-panel"><div class="search-container"><div class="search-head"><div class="search-title"><span><i class="fa-solid fa-paw"></i>搜索</span></div><div class="search-close-btn" onclick="toggleSearchWindow()"><i class="fa-regular fa-circle-xmark"></i></div></div><div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="search-input" type="text" placeholder="请输入需要搜索的内容……" value=""/></div><div class="search-body"><div id="search-count">匹配结果数: </div><div id="search-result"></div><div id="search-result-empty">未搜索到匹配的文章。</div></div></div></div><footer><div class="footer-content"><div class="copyright-info"><i class="fa-regular fa-copyright fa-xs"></i><span>2026 </span><a href="/about">Yule</a><i class="fa-solid fa-cat fa-sm"></i><span>Powered by </span><a href="https://hexo.io/" target="_blank">Hexo</a><span> &amp; </span><a href="https://github.com/chanwj/hexo-theme-meow" target="_blank" title="v2.1.5">Theme Meow</a></div><div class="pageview-site"><span id="busuanzi_container_site_pv">总访问量 : <span id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner"></i></span></span><span id="busuanzi_container_site_uv">总访客数 : <span id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner"></i></span></span></div></div></footer>
+<script>const GLOBAL_CONFIG = {
+  comment: { theme: ''}
+}
+</script>
+<script src="/js/third-party/darkmode.js"></script>
+<script>var options = {
+  dark: '/css/darkmode.css',
+  startAt: '24:00',
+  endAt: '06:00',
+  checkSystemScheme: 'false',
+  saveOnToggle: 'true'
+};
+var darkMode = new DarkMode(options);
+// change comment theme synchronously 同步修改评论区主题
+if (darkMode.getMode() == "dark" && (false || false)) {
+  if (document.getElementById('comment')) {
+    document.getElementById('comment').getElementsByTagName('script')[0].setAttribute('data-theme', 'noborder_dark');
+  }
+}
+</script><script>if (localStorage.getItem('font-size')) {
+  document.querySelector('.post-content').style.fontSize = localStorage.getItem('font-size') + 'px';
+}
+</script>
+<script src="/js/theme/tool-bar.js"></script>
+
+
+<script src="/js/theme/menu.js"></script>
+
+
+<script src="/js/third-party/clipboard.min.js"></script>
+
+
+<script src="/js/theme/copy.js"></script>
+<script>copyCode();
+</script>
+<script src="/js/jquery-3.7.1.min.js"></script>
+
+
+<script src="/js/theme/search.js"></script>
+<script>searchFunc('/search.xml', 'search-input', 'search-result');
+</script></body></html>
